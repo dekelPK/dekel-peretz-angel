@@ -6,7 +6,7 @@
   <title>דקל פרץ אנג'ל</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
 
@@ -83,35 +83,55 @@
       <span class="label">תוכן</span>
       <h2>ריילס <em>אחרונים</em></h2>
     </div>
-    <div class="reels-scroll">
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DXe5WoHof0M/"
-          data-instgrm-version="14"
-          style="background:#fff;border:0;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);margin:0;max-width:320px;min-width:280px;width:100%;">
-        </blockquote>
-      </div>
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DXmnN8SIhX_/"
-          data-instgrm-version="14"
-          style="background:#fff;border:0;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);margin:0;max-width:320px;min-width:280px;width:100%;">
-        </blockquote>
-      </div>
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DYVBUI5o-69/"
-          data-instgrm-version="14"
-          style="background:#fff;border:0;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);margin:0;max-width:320px;min-width:280px;width:100%;">
-        </blockquote>
-      </div>
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DZF76R9oj_z/"
-          data-instgrm-version="14"
-          style="background:#fff;border:0;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);margin:0;max-width:320px;min-width:280px;width:100%;">
-        </blockquote>
-      </div>
+    <div class="reels-grid">
+      <a href="https://www.instagram.com/reel/DXe5WoHof0M/" target="_blank" rel="noopener" class="reel-card" style="background-image:url('IMG_9827.png');--delay:0s">
+        <div class="reel-overlay"></div>
+        <div class="reel-tag">🍽️ פוד</div>
+        <div class="reel-play-wrap">
+          <div class="reel-pulse"></div>
+          <div class="reel-play">▶</div>
+        </div>
+        <div class="reel-bottom">
+          <span class="reel-ig">@dekel_peretz_angel</span>
+          <span class="reel-badge">Reel</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/reel/DXmnN8SIhX_/" target="_blank" rel="noopener" class="reel-card" style="background-image:url('IMG_9828.png');--delay:0.12s">
+        <div class="reel-overlay"></div>
+        <div class="reel-tag">🍽️ פוד</div>
+        <div class="reel-play-wrap">
+          <div class="reel-pulse"></div>
+          <div class="reel-play">▶</div>
+        </div>
+        <div class="reel-bottom">
+          <span class="reel-ig">@dekel_peretz_angel</span>
+          <span class="reel-badge">Reel</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/reel/DYVBUI5o-69/" target="_blank" rel="noopener" class="reel-card" style="background-image:url('IMG_9829.png');--delay:0.24s">
+        <div class="reel-overlay"></div>
+        <div class="reel-tag">🍽️ פוד</div>
+        <div class="reel-play-wrap">
+          <div class="reel-pulse"></div>
+          <div class="reel-play">▶</div>
+        </div>
+        <div class="reel-bottom">
+          <span class="reel-ig">@dekel_peretz_angel</span>
+          <span class="reel-badge">Reel</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/reel/DZF76R9oj_z/" target="_blank" rel="noopener" class="reel-card" style="background-image:url('IMG_9830.png');--delay:0.36s">
+        <div class="reel-overlay"></div>
+        <div class="reel-tag">🌿 וייבס</div>
+        <div class="reel-play-wrap">
+          <div class="reel-pulse"></div>
+          <div class="reel-play">▶</div>
+        </div>
+        <div class="reel-bottom">
+          <span class="reel-ig">@dekel_peretz_angel</span>
+          <span class="reel-badge">Reel</span>
+        </div>
+      </a>
     </div>
     <a href="https://www.instagram.com/dekel_peretz_angel?igsh=MWF5MXI2empuNXgxZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="reels-more">לכל התוכן ↗</a>
   </section>
@@ -143,7 +163,6 @@
     <p class="footer-copy">© 2025 דקל פרץ אנג'ל &nbsp;·&nbsp; עשוי באהבה ❤️</p>
   </footer>
 
-  <script async src="//www.instagram.com/embed.js"></script>
   <script>
     const observer = new IntersectionObserver(els => {
       els.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
