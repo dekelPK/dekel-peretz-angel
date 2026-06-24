@@ -264,26 +264,77 @@ body {
 
 /* ── REELS ── */
 .reels {
-  padding: 6rem 2rem;
-  background: var(--dark);
+  position: relative;
+  padding: 7rem 2rem;
+  background: #09090f;
   text-align: center;
+  overflow: hidden;
 }
-.reels-header { margin-bottom: 2.5rem; }
-.reels-header .label { color: rgba(255,255,255,0.4); }
+
+/* Animated background blobs */
+.reels-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.reels-blob--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #f093fb 0%, transparent 70%);
+  top: -160px; right: -140px;
+  opacity: 0.18;
+  animation: blobFloat 9s ease-in-out infinite alternate;
+}
+.reels-blob--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #4facfe 0%, transparent 70%);
+  bottom: -120px; left: -100px;
+  opacity: 0.15;
+  animation: blobFloat 11s ease-in-out infinite alternate-reverse;
+}
+.reels-blob--3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #f6d365 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  animation: blobFloat 7s ease-in-out infinite alternate;
+}
+@keyframes blobFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 25px) scale(1.12); }
+}
+.reels-blob--3 { animation-name: blobFloat3; }
+@keyframes blobFloat3 {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to   { transform: translate(calc(-50% + 20px), calc(-50% + 15px)) scale(1.1); }
+}
+
+.reels-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+.reels-header .label { color: rgba(255,255,255,0.35); }
 .reels-header h2 { color: #fff; }
 
 .reels-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 860px;
-  margin: 0 auto 2rem;
+  gap: 1.1rem;
+  max-width: 880px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .reel-card {
   aspect-ratio: 9/16;
-  border-radius: 20px;
-  background: var(--g);
+  border-radius: 22px;
+  background: linear-gradient(160deg, var(--c1), var(--c2));
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+  animation-delay: var(--delay, 0s);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -291,38 +342,133 @@ body {
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s, box-shadow 0.28s;
+  transition: transform 0.32s cubic-bezier(0.23,1,0.32,1), box-shadow 0.32s;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 .reel-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.6);
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Shine sweep */
+.reel-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+    transparent 40%,
+    rgba(255,255,255,0.18) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shineSweep 4s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes shineSweep {
+  0%   { background-position: 200% 0; }
+  60%  { background-position: -100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Tag at top */
+.reel-tag {
+  position: absolute;
+  top: 1rem;
+  right: 0.9rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+  border-radius: 50px;
+  padding: 0.28rem 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+/* Play button with pulse ring */
+.reel-play-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reel-pulse {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  animation: pulseRing 2.2s ease-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes pulseRing {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.7); opacity: 0; }
 }
 .reel-play {
-  font-size: 2rem;
-  color: rgba(255,255,255,0.9);
-  transition: transform 0.2s;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #fff;
+  transition: transform 0.2s, background 0.2s;
+  padding-right: 2px;
 }
-.reel-card:hover .reel-play { transform: scale(1.2); }
-.reel-badge {
+.reel-card:hover .reel-play {
+  transform: scale(1.12);
+  background: rgba(255,255,255,0.35);
+}
+
+/* Bottom bar */
+.reel-bottom {
   position: absolute;
-  bottom: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.62rem;
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 1.2rem 0.9rem 0.85rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reel-ig {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reel-badge {
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.55);
+  flex-shrink: 0;
 }
 
 .reels-more {
+  position: relative;
+  z-index: 1;
   display: inline-block;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.4);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
@@ -379,9 +525,11 @@ footer { background: var(--dark); overflow: hidden; }
 @media (max-width: 600px) {
   .hero-content { padding: 2rem 1.5rem 5rem; }
   .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .reels { padding: 5rem 1.25rem; }
   .about { padding: 5rem 0 3rem; }
-  .reels, .cta { padding: 5rem 1.5rem; }
+  .cta { padding: 5rem 1.5rem; }
   .cat-card { flex: 0 0 120px; height: 148px; }
   .cat-icon { font-size: 2rem; }
   .btn { font-size: 0.88rem; padding: 0.65rem 1.3rem; }
+  .reel-ig { display: none; }
 }
