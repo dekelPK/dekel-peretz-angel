@@ -267,7 +267,7 @@ body {
   margin-bottom: 0.6rem;
   position: relative;
 }
-.about h2, .reels-header h2, .cta h2 {
+.about h2, .reels-header h2, .cta h2, .collabs-header h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 6vw, 3rem);
   font-weight: 700;
@@ -275,9 +275,9 @@ body {
   margin-bottom: 1.2rem;
   line-height: 1.2;
 }
-.about h2 em, .reels-header h2 em, .cta h2 em { font-style: italic; font-weight: 400; color: var(--rose); }
+.about h2 em, .reels-header h2 em, .cta h2 em, .collabs-header h2 em { font-style: italic; font-weight: 400; color: var(--rose); }
 .about p { font-size: 1rem; color: #6b6056; line-height: 2; font-weight: 300; }
-.about-bio { margin-bottom: 0.5rem; }
+.about-bio { margin-bottom: 0.75rem; }
 
 /* ── Cat strip ── */
 .cat-strip {
@@ -312,6 +312,87 @@ body {
 .cat-card:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.22); }
 .cat-icon { font-size: 2.4rem; transform: translateZ(20px); }
 .cat-name { font-size: 0.82rem; font-weight: 700; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.2); white-space: nowrap; transform: translateZ(12px); }
+
+/* ── COLLABS ── */
+.collabs {
+  position: relative;
+  padding: 6.5rem 2rem;
+  background: var(--warm);
+  text-align: center;
+  overflow: hidden;
+}
+.collabs-header { max-width: 640px; margin: 0 auto 3rem; }
+.collabs-sub { color: var(--muted); font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
+
+.collabs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.collab-card {
+  position: relative;
+  border-radius: 26px;
+  background: #fff;
+  padding: 2.2rem 1.4rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.18s ease, box-shadow 0.25s;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+.collab-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+}
+.collab-card::after {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c1), transparent 70%);
+  opacity: 0.12;
+  pointer-events: none;
+}
+.collab-card:hover { box-shadow: 0 24px 55px rgba(0,0,0,0.16); }
+.collab-emoji { font-size: 2.6rem; margin-bottom: 0.3rem; transform: translateZ(24px); }
+.collab-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+  transform: translateZ(16px);
+}
+.collab-he { font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-top: -0.3rem; }
+.collab-desc {
+  font-size: 0.85rem;
+  color: #6b6056;
+  line-height: 1.7;
+  font-weight: 300;
+  flex: 1;
+}
+.collab-type {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--rose);
+  background: rgba(201,100,110,0.08);
+  border: 1px solid rgba(201,100,110,0.2);
+  border-radius: 50px;
+  padding: 0.3rem 0.85rem;
+}
 
 /* ── REELS ── */
 .reels {
@@ -414,7 +495,7 @@ body {
 .reels-more:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
 
 /* ── CTA ── */
-.cta { padding: 6.5rem 2rem; background: var(--warm); text-align: center; }
+.cta { padding: 6.5rem 2rem; background: var(--cream); text-align: center; }
 .cta p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; font-weight: 300; }
 .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
@@ -455,11 +536,20 @@ footer { background: var(--dark); overflow: hidden; }
 @keyframes fabPulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.4); opacity: 0; } }
 
 /* ── Mobile ── */
+@media (max-width: 900px) {
+  .collabs-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 600px) {
   .hero-content { padding: 2rem 1.5rem 5rem; }
   .reels { padding: 5rem 1.25rem; }
   .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .about { padding: 5rem 0 3rem; }
+  .collabs { padding: 5rem 1.25rem; }
+  .collabs-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  .collab-card { padding: 1.6rem 1rem 1.4rem; }
+  .collab-emoji { font-size: 2.1rem; }
+  .collab-name { font-size: 1.05rem; }
+  .collab-desc { font-size: 0.78rem; }
   .cta { padding: 5rem 1.5rem; }
   .cat-card { flex: 0 0 120px; height: 148px; }
   .cat-icon { font-size: 2rem; }
