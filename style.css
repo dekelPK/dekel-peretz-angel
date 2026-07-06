@@ -17,6 +17,33 @@ body {
   color: var(--dark);
   direction: rtl;
   overflow-x: hidden;
+  cursor: none;
+}
+
+@media (hover: none) {
+  body { cursor: auto; }
+}
+
+/* ── CUSTOM CURSOR ── */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,100,110,0.6);
+  background: rgba(201,100,110,0.08);
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s, width 0.25s, height 0.25s, margin 0.25s, background 0.25s;
+}
+.custom-cursor.active { opacity: 1; }
+.custom-cursor.hover {
+  width: 46px; height: 46px;
+  margin: -23px 0 0 -23px;
+  background: rgba(201,100,110,0.14);
+  border-color: rgba(201,100,110,0.9);
 }
 
 /* ── INTRO LOADER ── */
@@ -225,9 +252,23 @@ body {
   100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
-/* ── Reveal ── */
-.reveal { opacity: 0; transform: translateY(45px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1); }
+/* ── Reveal (base + variants) ── */
+.reveal { opacity: 0; transform: translateY(45px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1), clip-path 0.9s cubic-bezier(0.22,1,0.36,1); }
 .reveal.visible { opacity: 1; transform: none; }
+
+.reveal-wipe { clip-path: inset(0 0 100% 0); }
+.reveal-wipe.visible { clip-path: inset(0 0 0 0); }
+
+.reveal-scale { opacity: 0; transform: scale(0.94) translateY(30px); }
+.reveal-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+.reveal-slide { opacity: 0; transform: translateX(60px); }
+[dir="rtl"] .reveal-slide { transform: translateX(-60px); }
+.reveal-slide.visible { opacity: 1; transform: translateX(0); }
+
+/* ── Stagger children ── */
+.stagger-item { opacity: 0; transform: translateY(28px) scale(0.96); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.stagger-item.visible { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ── ABOUT ── */
 .about {
@@ -568,6 +609,10 @@ footer { background: var(--dark); overflow: hidden; }
   .btn { font-size: 0.88rem; padding: 0.65rem 1.3rem; }
   .reel-ig { display: none; }
   .fab { width: 48px; height: 48px; bottom: 1.1rem; left: 1.1rem; }
+}
+
+@media (hover: none) {
+  .custom-cursor { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
