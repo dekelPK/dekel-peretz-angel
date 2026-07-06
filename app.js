@@ -27,6 +27,13 @@ const staggerObserver = new IntersectionObserver((els) => {
 }, { threshold: 0.2 });
 document.querySelectorAll('.stagger-group').forEach(el => staggerObserver.observe(el));
 
+// Safety net: force everything visible if for any reason the observers
+// above didn't fire (old browser, IntersectionObserver quirk, etc.)
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.stagger-item:not(.visible)').forEach(el => el.classList.add('visible'));
+}, 2500);
+
 // ── Scroll progress bar + parallax ──
 const progress = document.getElementById('scrollProgress');
 const fab = document.getElementById('fab');
