@@ -6,16 +6,32 @@ window.addEventListener('load', () => {
   }, 1400);
 });
 
-// ── Scroll reveal ──
+// ── Scroll reveal (per-section entrances) ──
 const observer = new IntersectionObserver((els) => {
-  els.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
-}, { threshold: 0.12 });
+  els.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); } });
+}, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── Scroll progress bar ──
+// Staggered children reveal (cards inside a just-revealed section)
+const staggerObserver = new IntersectionObserver((els) => {
+  els.forEach(el => {
+    if (el.isIntersecting) {
+      const items = el.target.querySelectorAll('.stagger-item');
+      items.forEach((item, i) => {
+        item.style.transitionDelay = (i * 0.09) + 's';
+        item.classList.add('visible');
+      });
+      staggerObserver.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.stagger-group').forEach(el => staggerObserver.observe(el));
+
+// ── Scroll progress bar + parallax ──
 const progress = document.getElementById('scrollProgress');
 const fab = document.getElementById('fab');
 const heroPhoto = document.getElementById('heroPhoto');
+const heroVideo = document.getElementById('heroVideo');
 const parallaxEls = document.querySelectorAll('[data-parallax]');
 
 function onScroll() {
@@ -24,18 +40,17 @@ function onScroll() {
   const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
 
-  // Floating button appears after hero
   if (fab) {
     if (scrollTop > window.innerHeight * 0.6) fab.classList.add('show');
     else fab.classList.remove('show');
   }
 
-  // Hero parallax
-  if (heroPhoto && scrollTop < window.innerHeight) {
-    heroPhoto.style.transform = 'translateY(' + (scrollTop * 0.25) + 'px)';
+  if (scrollTop < window.innerHeight) {
+    const y = scrollTop * 0.25;
+    if (heroPhoto) heroPhoto.style.transform = 'translateY(' + y + 'px)';
+    if (heroVideo) heroVideo.style.transform = 'translateY(' + y + 'px)';
   }
 
-  // Decorative parallax
   parallaxEls.forEach(el => {
     const speed = parseFloat(el.dataset.parallax) || 0.1;
     const rect = el.getBoundingClientRect();
@@ -71,7 +86,7 @@ if (particlesBox && !window.matchMedia('(prefers-reduced-motion: reduce)').match
   }
 }
 
-// ── Magnetic buttons ──
+// ── Magnetic buttons + 3D tilt (desktop only) ──
 const isTouch = window.matchMedia('(hover: none)').matches;
 if (!isTouch) {
   document.querySelectorAll('.magnetic').forEach(el => {
@@ -84,7 +99,6 @@ if (!isTouch) {
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
   });
 
-  // ── 3D tilt cards ──
   document.querySelectorAll('.tilt').forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const r = el.getBoundingClientRect();
@@ -95,5 +109,23 @@ if (!isTouch) {
       el.style.transform = 'perspective(700px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-8px) scale(1.03)';
     });
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+
+  // ── Custom cursor ──
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+  let cx = 0, cy = 0, tx = 0, ty = 0;
+  window.addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; cursor.classList.add('active'); });
+  function animCursor() {
+    cx += (tx - cx) * 0.18;
+    cy += (ty - cy) * 0.18;
+    cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a, .tilt, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
   });
 }
