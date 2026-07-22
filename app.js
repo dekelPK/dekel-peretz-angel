@@ -93,8 +93,21 @@ if (particlesBox && !window.matchMedia('(prefers-reduced-motion: reduce)').match
   }
 }
 
-// ── Magnetic buttons + 3D tilt (desktop only) ──
+// ── Reels spotlight follows cursor ──
+const reelsSpotlight = document.getElementById('reelsSpotlight');
 const isTouch = window.matchMedia('(hover: none)').matches;
+if (reelsSpotlight && !isTouch) {
+  const reelsSection = reelsSpotlight.closest('.reels');
+  reelsSection.addEventListener('mousemove', (e) => {
+    const r = reelsSection.getBoundingClientRect();
+    reelsSpotlight.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    reelsSpotlight.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    reelsSpotlight.classList.add('active');
+  });
+  reelsSection.addEventListener('mouseleave', () => reelsSpotlight.classList.remove('active'));
+}
+
+// ── Magnetic buttons + 3D tilt (desktop only) ──
 if (!isTouch) {
   document.querySelectorAll('.magnetic').forEach(el => {
     el.addEventListener('mousemove', (e) => {
