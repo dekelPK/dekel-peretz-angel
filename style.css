@@ -442,9 +442,9 @@ body {
 
 .collabs-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.25rem;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 .collab-card {
