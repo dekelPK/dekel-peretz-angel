@@ -570,16 +570,26 @@ body {
 .reels-header .label { color: rgba(255,255,255,0.35); }
 .reels-header h2 { color: #fff; }
 
-.reels-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.1rem;
-  max-width: 1050px;
-  margin: 0 auto 2.5rem;
+.reels-carousel {
   position: relative;
   z-index: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 2.5rem;
+}
+.reels-carousel::-webkit-scrollbar { display: none; }
+
+.reels-grid {
+  display: flex;
+  gap: 1.1rem;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 .reel-card {
+  flex: 0 0 200px;
   aspect-ratio: 9/16;
   border-radius: 22px;
   background-size: cover;
@@ -594,6 +604,7 @@ body {
   transition: transform 0.18s ease, box-shadow 0.32s;
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   transform-style: preserve-3d;
+  scroll-snap-align: start;
 }
 .reel-card:hover { box-shadow: 0 30px 65px rgba(0,0,0,0.7); }
 .reel-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.65) 100%); }
@@ -720,8 +731,10 @@ footer { background: var(--dark); overflow: hidden; }
   .story-ring { width: 50px; height: 50px; }
   .story-thumb { font-size: 1.15rem; }
   .story-label { font-size: 0.56rem; }
-  .reels { padding: 5rem 1.25rem; }
-  .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .reels { padding: 5rem 0; }
+  .reels-header { padding: 0 1.25rem; }
+  .reels-grid { padding: 0 1.25rem; gap: 0.75rem; }
+  .reel-card { flex: 0 0 150px; }
   .about-pro { padding: 4rem 1.25rem 3.5rem; }
   .about-pro-top { grid-template-columns: 105px 1fr; gap: 0.85rem; }
   .about-pro-photo { max-height: 200px; }
@@ -739,6 +752,7 @@ footer { background: var(--dark); overflow: hidden; }
   .btn { font-size: 0.88rem; padding: 0.65rem 1.3rem; }
   .reel-ig { display: none; }
   .fab { width: 48px; height: 48px; bottom: 1.1rem; left: 1.1rem; }
+  .reels-more { margin: 0 1.25rem; }
 }
 
 @media (hover: none) {
