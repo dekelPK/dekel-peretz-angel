@@ -375,21 +375,28 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem 3.5rem;
-  max-width: 900px;
+  gap: 1.25rem;
+  max-width: 950px;
   margin: 1.75rem auto 0;
 }
-.brand-logo {
-  font-family: 'Heebo', sans-serif;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: rgba(255,255,255,0.88);
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  opacity: 0.85;
-  transition: opacity 0.2s;
+.brand-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 160px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
 }
-.brand-logo:hover { opacity: 1; }
+.brand-card:hover { transform: translateY(-4px); }
+.brand-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
 /* ── GIANT MARQUEE DIVIDER ── */
 .divider-text {
@@ -715,8 +722,8 @@ footer { background: var(--dark); overflow: hidden; }
   .about-pro { padding: 4rem 1.25rem 0; }
   .about-pro-strip { grid-template-columns: repeat(2, 1fr); }
   .brands { padding: 3rem 1.25rem; }
-  .brands-grid { gap: 1.5rem 2rem; }
-  .brand-logo { font-size: 0.95rem; }
+  .brands-grid { gap: 1rem; }
+  .brand-card { width: 130px; height: 72px; padding: 0.75rem 1rem; }
   .collabs { padding: 5rem 1.25rem; }
   .collabs-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
   .collab-card { padding: 1.6rem 1rem 1.4rem; }
