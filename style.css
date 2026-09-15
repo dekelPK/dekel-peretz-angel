@@ -322,33 +322,40 @@ body {
   padding: 6rem 2rem 0;
   text-align: center;
 }
-.about-pro-inner { max-width: 760px; margin: 0 auto; }
+.about-pro-inner { max-width: 980px; margin: 0 auto; }
+.about-pro-top {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+  align-items: center;
+  text-align: right;
+}
+.about-pro-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
 .about-pro-title {
   font-family: 'Heebo', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -1px;
-  font-size: clamp(3rem, 11vw, 6rem);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
   line-height: 0.95;
   color: var(--dark);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .about-pro-title em { font-style: normal; color: var(--rose); }
-.about-pro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  text-align: right;
-  margin-bottom: 2.5rem;
-}
-.about-pro-bio { font-size: 0.98rem; color: #4a423d; line-height: 1.9; font-weight: 400; }
+.about-pro-bio { font-size: 0.98rem; color: #4a423d; line-height: 1.9; font-weight: 400; margin-bottom: 1rem; }
 
 .about-pro-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.4rem;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 3rem auto 0;
 }
 .strip-thumb {
   aspect-ratio: 3/4;
@@ -693,6 +700,10 @@ footer { background: var(--dark); overflow: hidden; }
 @media (max-width: 900px) {
   .collabs-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 700px) {
+  .about-pro-top { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+  .about-pro-photo { max-width: 280px; margin: 0 auto; }
+}
 @media (max-width: 600px) {
   .hero-content { padding: 2rem 1.5rem 0.5rem; }
   .story-nav { gap: 0.9rem; padding: 0.25rem 1rem 2rem; }
@@ -702,7 +713,6 @@ footer { background: var(--dark); overflow: hidden; }
   .reels { padding: 5rem 1.25rem; }
   .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .about-pro { padding: 4rem 1.25rem 0; }
-  .about-pro-grid { grid-template-columns: 1fr; text-align: center; }
   .about-pro-strip { grid-template-columns: repeat(2, 1fr); }
   .brands { padding: 3rem 1.25rem; }
   .brands-grid { gap: 1.5rem 2rem; }
