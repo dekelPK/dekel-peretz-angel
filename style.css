@@ -361,6 +361,11 @@ body {
   text-align-last: right;
 }
 
+@media (min-width: 701px) {
+  .about-pro-photo { width: 300px; margin: 3rem 0 1rem 2.5rem; }
+  .about-pro-bio { font-size: 1.25rem; line-height: 2.1; }
+}
+
 .cat-pills {
   display: flex;
   flex-wrap: wrap;
