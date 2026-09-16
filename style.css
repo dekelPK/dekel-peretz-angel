@@ -174,9 +174,11 @@ body {
   font-weight: 300;
 }
 .hero-name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Heebo', sans-serif;
   font-size: clamp(3.2rem, 14vw, 6.5rem);
-  font-weight: 700;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
   line-height: 1.05;
   margin-bottom: 1rem;
 }
@@ -187,7 +189,7 @@ body {
   animation: lineUp 1s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 .line-mask:nth-child(2) .line { animation-delay: 0.12s; }
-.hero-name em { font-style: italic; font-weight: 400; color: #fde8c8; }
+.hero-name em { font-style: normal; font-weight: 900; color: #fde8c8; }
 @keyframes lineUp { to { transform: translateY(0); } }
 
 .hero-sub {
