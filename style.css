@@ -368,6 +368,7 @@ body {
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 1.5rem;
+  justify-content: flex-end;
 }
 .cat-pill {
   display: inline-flex;
@@ -777,12 +778,12 @@ footer { background: var(--dark); overflow: hidden; }
   .collabs-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 700px) {
-  .about-pro-top { grid-template-columns: 180px 1fr; gap: 1rem; align-items: start; }
-  .about-pro-photo { border-radius: 14px; }
-  .about-pro-title { font-size: clamp(2.6rem, 12vw, 3.8rem); margin-bottom: 0.6rem; }
-  .about-pro-copy { text-align: right; }
+  .about-pro-top { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+  .about-pro-photo { width: 220px; max-width: 60vw; border-radius: 18px; margin: 0 auto; }
+  .about-pro-title { font-size: clamp(2.8rem, 13vw, 4.2rem); margin-bottom: 1rem; text-align: center; }
+  .about-pro-copy { text-align: right; width: 100%; }
   .about-pro-bio { text-align: right; text-align-last: right; }
-  .cat-pills { justify-content: flex-start; }
+  .cat-pills { justify-content: flex-end; }
 }
 @media (max-width: 600px) {
   .hero-content { padding: 2rem 1.5rem 0.5rem; }
@@ -795,8 +796,8 @@ footer { background: var(--dark); overflow: hidden; }
   .reels-grid { padding: 0 1.25rem; gap: 0.75rem; }
   .reel-card { flex: 0 0 150px; }
   .about-pro { padding: 4rem 1.25rem 3.5rem; }
-  .about-pro-top { grid-template-columns: 140px 1fr; gap: 0.75rem; }
-  .about-pro-title { font-size: clamp(2.1rem, 12vw, 2.9rem); margin-bottom: 0.5rem; }
+  .about-pro-photo { width: 180px; }
+  .about-pro-title { font-size: clamp(2.3rem, 13vw, 3.2rem); }
   .about-pro-strip { grid-template-columns: repeat(2, 1fr); }
   .brands { padding: 3rem 1.25rem; }
   .brands-grid { gap: 1rem; }
