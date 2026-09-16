@@ -324,17 +324,15 @@ body {
 }
 .about-pro-inner { max-width: 1080px; margin: 0 auto; }
 .about-pro-top {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 2.5rem;
-  align-items: start;
   text-align: right;
 }
 .about-pro-photo {
-  width: 100%;
-  aspect-ratio: 3 / 4;
+  float: right;
+  width: 420px;
+  max-width: 42%;
+  height: auto;
+  margin: 3rem 0 1rem 2.5rem;
   object-fit: contain;
-  object-position: top center;
   border-radius: 0;
   box-shadow: none;
   background: transparent;
@@ -369,6 +367,8 @@ body {
   gap: 0.55rem;
   margin-top: 1.5rem;
   justify-content: center;
+  clear: both;
+  width: 100%;
 }
 .cat-pill {
   display: inline-flex;
@@ -778,8 +778,7 @@ footer { background: var(--dark); overflow: hidden; }
   .collabs-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 700px) {
-  .about-pro-top { display: grid; grid-template-columns: 120px 1fr; gap: 1.1rem; align-items: start; text-align: right; }
-  .about-pro-photo { width: 100%; border-radius: 0; }
+  .about-pro-photo { width: 180px; max-width: 45%; margin: 2rem 0 1rem 1.25rem; }
   .about-pro-title { font-size: clamp(2.6rem, 13vw, 4rem); margin-bottom: 0.75rem; text-align: right; }
   .about-pro-copy { text-align: right; width: 100%; }
   .about-pro-bio { text-align: right; }
@@ -795,7 +794,7 @@ footer { background: var(--dark); overflow: hidden; }
   .reels-grid { padding: 0 1.25rem; gap: 0.75rem; }
   .reel-card { flex: 0 0 150px; }
   .about-pro { padding: 4rem 1.25rem 3.5rem; }
-  .about-pro-top { grid-template-columns: 100px 1fr; }
+  .about-pro-photo { width: 150px; max-width: 42%; }
   .about-pro-title { font-size: clamp(2.1rem, 12vw, 3rem); }
   .about-pro-strip { grid-template-columns: repeat(2, 1fr); }
   .brands { padding: 3rem 1.25rem; }
