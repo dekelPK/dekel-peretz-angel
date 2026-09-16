@@ -779,7 +779,8 @@ footer { background: var(--dark); overflow: hidden; }
 }
 .about-pro-title-mobile { display: none; }
 @media (max-width: 700px) {
-  .about-pro-photo { width: 180px; max-width: 42%; margin: 0.5rem 0 1rem 1.25rem; transform: scaleY(1.17); transform-origin: top; }
+  .about-pro-photo { width: 180px; max-width: 42%; margin: 0.5rem 0 0.5rem 1.25rem; }
+  .about-pro-bio { line-height: 1.85; margin-bottom: 1rem; }
   .about-pro-title-desktop { display: none; }
   .about-pro-title-mobile { display: block; width: 100%; font-size: clamp(3.6rem, 19vw, 5.6rem); margin: 0 0 1.25rem; text-align: center; }
   .about-pro-copy { text-align: right; width: 100%; }
