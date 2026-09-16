@@ -782,7 +782,7 @@ footer { background: var(--dark); overflow: hidden; }
   .about-pro-photo { width: 220px; max-width: 60vw; border-radius: 18px; margin: 0 auto; }
   .about-pro-title { font-size: clamp(2.8rem, 13vw, 4.2rem); margin-bottom: 1rem; text-align: center; }
   .about-pro-copy { text-align: right; width: 100%; }
-  .about-pro-bio { text-align: right; text-align-last: right; }
+  .about-pro-bio { text-align: right; }
   .cat-pills { justify-content: flex-end; }
 }
 @media (max-width: 600px) {
