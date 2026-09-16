@@ -777,9 +777,11 @@ footer { background: var(--dark); overflow: hidden; }
 @media (max-width: 900px) {
   .collabs-grid { grid-template-columns: repeat(2, 1fr); }
 }
+.about-pro-title-mobile { display: none; }
 @media (max-width: 700px) {
-  .about-pro-photo { width: 180px; max-width: 45%; margin: 2rem 0 1rem 1.25rem; }
-  .about-pro-title { font-size: clamp(2.6rem, 13vw, 4rem); margin-bottom: 0.75rem; text-align: right; }
+  .about-pro-photo { width: 160px; max-width: 42%; margin: 0.5rem 0 1rem 1.25rem; }
+  .about-pro-title-desktop { display: none; }
+  .about-pro-title-mobile { display: block; width: 100%; font-size: clamp(3rem, 14vw, 4.4rem); margin: 0 0 1.25rem; text-align: right; }
   .about-pro-copy { text-align: right; width: 100%; }
   .about-pro-bio { text-align: right; }
 }
